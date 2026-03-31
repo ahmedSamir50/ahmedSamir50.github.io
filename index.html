@@ -232,9 +232,7 @@
         <div class="mt-4 h-1 w-16 bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mx-auto"></div>
       </div>
       <div class="relative">
-        <div
-          class="hidden md:block absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 via-violet-500/30 to-transparent">
-        </div>
+
         <!-- Timeline Visual Summary -->
         <div class="hidden lg:flex items-center justify-between relative mb-16 pt-4 pb-8 px-12 section-fade">
           <div class="absolute left-16 right-16 top-1/2 -translate-y-4 h-0.5 bg-white/5 rounded-full"></div>
@@ -285,189 +283,227 @@
 
         <div class="space-y-8">
 
-          <!-- Elm -->
-          <div class="section-fade group flex gap-8">
-            <div class="hidden md:flex flex-col items-center pt-1.5 flex-shrink-0">
-              <div class="relative w-4 h-4 z-10 group-hover:scale-125 transition-transform">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50"
-                  style="animation-duration: 2.5s"></span>
-                <span
-                  class="relative inline-flex w-4 h-4 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 border-2 border-navy-950 shadow-[0_0_10px_rgba(16,185,129,0.3)]"></span>
-              </div>
-            </div>
-            <div
-              class="flex-1 p-6 sm:p-8 rounded-2xl bg-navy-900 border border-white/10 hover:border-emerald-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/5">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
-                <div>
-                  <span
-                    class="inline-flex items-center px-2.5 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-mono rounded-md mb-2">🚀
-                    Current Role</span>
-                  <h3 class="text-xl font-bold text-slate-100">Full Stack Lead</h3>
-                  <p class="text-emerald-400 font-semibold"><a href="https://elm.sa/en/Pages/default.aspx"
-                      target="_blank" class="hover:underline">Elm</a> (Remote via NTG Egypt)</p>
-                  <p class="text-slate-500 text-xs mt-0.5">Riyadh, KSA</p>
+        <div class="space-y-4">
+          <!-- Elm (Expanded by default) -->
+          <div class="accordion-item group bg-navy-900 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 shadow-xl shadow-emerald-500/5 open" id="exp-elm">
+            <button onclick="toggleAccordion('exp-elm')" class="w-full flex flex-col sm:flex-row sm:items-center justify-between p-6 sm:p-8 text-left hover:bg-white/[0.02] transition-colors">
+              <div class="flex items-center gap-4">
+                <div class="h-10 w-10 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                  <i data-lucide="briefcase" class="w-5 h-5 text-emerald-400"></i>
                 </div>
-                <code
-                  class="text-xs text-slate-400 bg-navy-800 border border-white/10 px-3 py-1.5 rounded-lg whitespace-nowrap h-fit">Apr 2024 – Present</code>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-100">Full Stack Lead @ Elm</h3>
+                  <span class="inline-flex items-center px-2 py-0.5 bg-emerald-500/10 text-emerald-400 text-[10px] font-mono rounded-full mt-1">🚀 Current Role</span>
+                </div>
               </div>
-              <ul class="space-y-3">
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-emerald-400 flex-shrink-0 mt-0.5">▹</span><span><strong class="text-slate-300">GACA
-                      Aviation Portal:</strong> Engineered mission-critical e-services for the Saudi General Authority of Civil Aviation, driving architectural strategy for aviation traffic management and aircraft licensing with 100% regulatory compliance.</span>
-                </li>
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-emerald-400 flex-shrink-0 mt-0.5">▹</span><span><strong class="text-slate-300">CST
-                      (Mutasil) Portal:</strong> Led the scalable full-stack implementation for the Saudi Communication,
-                    Space &
-                    Technology Commission.</span></li>
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-emerald-400 flex-shrink-0 mt-0.5">▹</span><span><strong class="text-slate-300">Architecture & Scalability:</strong> Engineered high-availability micro-frontends and multi-tier .NET Core APIs, facilitating key architectural reviews to guarantee sub-second latency for sensitive regulatory data processing.</span></li>
-              </ul>
-              <div class="mt-5 flex flex-wrap gap-2"><span class="tech-badge">.NET Core</span><span
-                  class="tech-badge">EF Core</span><span class="tech-badge">Microservices</span><span
-                  class="tech-badge">K2 Workflow</span><span class="tech-badge">Camunda Workflow</span><span
-                  class="tech-badge">Web APIs</span></div>
+              <div class="flex items-center gap-6 mt-4 sm:mt-0">
+                <code class="text-xs text-slate-400 font-mono">Apr 2024 – Present</code>
+                <i data-lucide="plus" class="accordion-icon w-5 h-5 text-slate-500 transition-transform duration-300"></i>
+              </div>
+            </button>
+            <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out">
+              <div class="overflow-hidden">
+                <div class="px-6 sm:px-8 pb-8 pt-2">
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                      <!-- Sub-header info -->
+                      <div class="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
+                          <span>Remote (Riyadh, KSA)</span>
+                        </div>
+                        <a href="https://elm.sa/en/Pages/default.aspx" target="_blank" class="flex items-center gap-2 text-xs text-slate-400 hover:text-emerald-400 transition-colors">
+                          <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400"></i>
+                          <span>elm.sa</span>
+                        </a>
+                      </div>
+                      
+                      <ul class="space-y-4 mb-6">
+                        <li class="flex gap-3 text-sm text-slate-400">
+                          <span class="text-emerald-400 flex-shrink-0 mt-0.5">▹</span>
+                          <span><strong class="text-slate-300">GACA Aviation Portal:</strong> Engineered mission-critical e-services for the Saudi General Authority of Civil Aviation, driving architectural strategy for aviation traffic management and aircraft licensing with 100% regulatory compliance.</span>
+                        </li>
+                        <li class="flex gap-3 text-sm text-slate-400">
+                          <span class="text-emerald-400 flex-shrink-0 mt-0.5">▹</span>
+                          <span><strong class="text-slate-300">CST (Mutasil) Portal:</strong> Led the scalable full-stack implementation for the Saudi Communication, Space & Technology Commission.</span>
+                        </li>
+                        <li class="flex gap-3 text-sm text-slate-400">
+                          <span class="text-emerald-400 flex-shrink-0 mt-0.5">▹</span>
+                          <span><strong class="text-slate-300">Architecture & Scalability:</strong> Engineered high-availability micro-frontends and multi-tier .NET Core APIs, facilitating key architectural reviews to guarantee sub-second latency for sensitive regulatory data processing.</span>
+                        </li>
+                      </ul>
+                      
+                      <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-badge">.NET Core</span><span class="tech-badge">EF Core</span><span class="tech-badge">Microservices</span><span class="tech-badge">K2 Workflow</span><span class="tech-badge">Camunda Workflow</span><span class="tech-badge">Web APIs</span>
+                      </div>
+                    </div>
+                    
+                    <div class="hidden md:block w-32 h-32 flex-shrink-0">
+                      <div class="w-full h-full rounded-2xl bg-white/5 border border-white/10 p-4 flex items-center justify-center group-hover:border-emerald-500/20 transition-colors">
+                        <img src="assets/images/companies/ELm_logo.svg" alt="Elm Logo" class="max-w-full max-h-full logo-light opacity-80" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- SGT -->
-          <div class="section-fade group flex gap-8">
-            <div class="hidden md:flex flex-col items-center pt-1.5 flex-shrink-0">
-              <div
-                class="w-4 h-4 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 border-2 border-navy-950 group-hover:scale-125 z-10 transition-transform">
-              </div>
-            </div>
-            <div
-              class="flex-1 p-6 sm:p-8 rounded-2xl bg-navy-900 border border-white/10 hover:border-blue-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/5">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
-                <div>
-                  <span
-                    class="inline-flex items-center px-2.5 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-md mb-2">🏆
-                    Lead Role</span>
-                  <h3 class="text-xl font-bold text-slate-100">Full Stack Lead Developer</h3>
-                  <p class="text-blue-400 font-semibold"><a href="https://sgt.com.eg/en/" target="_blank"
-                      class="hover:underline">Sure Global Tech (SGT)</a> / <a href="https://www.sure.com.sa/en/"
-                      target="_blank" class="hover:underline">Sure</a></p>
-                  <p class="text-slate-500 text-xs mt-0.5">Cairo, Egypt · Serving KSA Government Entities</p>
+          <div class="accordion-item bg-navy-900 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 shadow-xl" id="exp-sgt">
+            <button onclick="toggleAccordion('exp-sgt')" class="w-full flex flex-col sm:flex-row sm:items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+              <div class="flex items-center gap-4">
+                <div class="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                  <i data-lucide="briefcase" class="w-5 h-5 text-blue-400"></i>
                 </div>
-                <code
-                  class="text-xs text-slate-400 bg-navy-800 border border-white/10 px-3 py-1.5 rounded-lg whitespace-nowrap h-fit">Feb 2022 – Apr 2024</code>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-100 uppercase tracking-tight">Full Stack Lead Developer @ Sure Global Tech</h3>
+                </div>
               </div>
-              <ul class="space-y-3">
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-blue-400 flex-shrink-0 mt-0.5">▹</span><span><a href="https://www.nupco.com/en/"
-                      target="_blank" class="text-slate-300 font-bold hover:text-blue-400">Nupco Tender
-                      Portal (iNupco):</a> Directed an 8-member engineering squad to develop a resilient medical ERP microservices portal, orchestrating a <span class="text-cyan-400 font-semibold">20B+ SAR</span> annual procurement pipeline.</span>
-                </li>
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-blue-400 flex-shrink-0 mt-0.5">▹</span><span><a href="https://www.neom.com/en-us"
-                      target="_blank" class="text-slate-300 font-bold hover:text-blue-400">NEOM Smart
-                      City:</a> Led the development of 7 high-availability production services serving 13,000+ personnel, providing technical advisory on integrating Face Recognition and CAD SOS ecosystems.</span></li>
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-blue-400 flex-shrink-0 mt-0.5">▹</span><span><a href="https://auction.zatca.gov.sa/"
-                      target="_blank" class="text-slate-300 font-bold hover:text-blue-400">ZATCA
-                      Auction Platform:</a> Engineered an extremely high-traffic algorithmic bidding engine for the KSA Tax Authority, continually proposing architectural enhancements for secure, real-time transaction processing.</span></li>
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-blue-400 flex-shrink-0 mt-0.5">▹</span><span><a
-                      href="https://mc.gov.sa/en/Pages/default.aspx" target="_blank"
-                      class="text-slate-300 font-bold hover:text-blue-400">Ministry of
-                      Commerce RPA:</a> Deployed a robust automated data pipeline successfully auditing and rating over
-                    <span class="text-cyan-400 font-semibold">32,000+ e-commerce platforms</span>.</span></li>
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-blue-400 flex-shrink-0 mt-0.5">▹</span><span><a href="https://mt.gov.sa/e-services"
-                      target="_blank" class="text-slate-300 font-bold hover:text-blue-400">Ministry of
-                      Tourism:</a> Delivered 3 compliance-critical production modules enabling streamlined, nation-wide
-                    facility licensing.</span></li>
-              </ul>
-              <div class="mt-5 flex flex-wrap gap-2"><span class="tech-badge">.NET Core</span><span
-                  class="tech-badge">Angular</span><span class="tech-badge">React</span><span
-                  class="tech-badge">Ionic</span><span class="tech-badge">Microservices</span><span
-                  class="tech-badge">Micro Frontends</span><span class="tech-badge">RabbitMQ</span><span
-                  class="tech-badge">SQL Server</span><span class="tech-badge">MongoDB</span><span
-                  class="tech-badge">ABP Framework</span><span class="tech-badge">Hangfire</span><span
-                  class="tech-badge">K2 Workflow</span><span class="tech-badge">Ultimus Workflow</span><span
-                  class="tech-badge">RPA</span><span class="tech-badge">Razor</span><span
-                  class="tech-badge">Docker</span><span class="tech-badge">SignalR</span></div>
+              <div class="flex items-center gap-6 mt-4 sm:mt-0">
+                <code class="text-xs text-slate-400 font-mono">Feb 2022 – Apr 2024</code>
+                <i data-lucide="plus" class="accordion-icon w-5 h-5 text-slate-500 transition-transform duration-300"></i>
+              </div>
+            </button>
+            <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out">
+              <div class="overflow-hidden">
+                <div class="px-6 pb-8 pt-2">
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                      <div class="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-400"></i>
+                          <span>Cairo, Egypt · Serving KSA Gov</span>
+                        </div>
+                        <a href="https://sgt.com.eg/en/" target="_blank" class="flex items-center gap-2 text-xs text-slate-400 hover:text-blue-400 transition-colors">
+                          <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-400"></i>
+                          <span>sgt.com.eg</span>
+                        </a>
+                      </div>
+                      
+                      <ul class="space-y-4 mb-6">
+                        <li class="flex gap-3 text-sm text-slate-400">
+                          <span class="text-blue-400 flex-shrink-0 mt-0.5">▹</span>
+                          <span><strong class="text-slate-300">Nupco Tender Portal:</strong> Directed an 8-member engineering squad to develop a resilient medical ERP microservices portal, orchestrating a <span class="text-cyan-400 font-semibold">20B+ SAR</span> annual procurement pipeline.</span>
+                        </li>
+                        <li class="flex gap-3 text-sm text-slate-400">
+                          <span class="text-blue-400 flex-shrink-0 mt-0.5">▹</span>
+                          <span><strong class="text-slate-300">ZATCA Auction:</strong> Engineered extremely high-traffic bidding engine for KSA Tax Authority with sub-second transaction processing.</span>
+                        </li>
+                      </ul>
+                      
+                      <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge">.NET Core</span><span class="tech-badge">Angular</span><span class="tech-badge">Microservices</span><span class="tech-badge">RabbitMQ</span><span class="tech-badge">SQL Server</span><span class="tech-badge">MongoDB</span>
+                      </div>
+                    </div>
+                    
+                    <div class="hidden md:block w-28 h-28 flex-shrink-0">
+                      <div class="w-full h-full rounded-2xl bg-white/5 border border-white/10 p-4 flex items-center justify-center">
+                        <img src="assets/images/companies/Sure_logo.svg" alt="Sure Logo" class="max-w-full max-h-full logo-light opacity-80" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- FlairsTech -->
-          <div class="section-fade group flex gap-8">
-            <div class="hidden md:flex flex-col items-center pt-1.5 flex-shrink-0">
-              <div
-                class="w-4 h-4 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 border-2 border-navy-950 group-hover:scale-125 z-10 transition-transform">
-              </div>
-            </div>
-            <div
-              class="flex-1 p-6 sm:p-8 rounded-2xl bg-navy-900 border border-white/10 hover:border-violet-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-violet-500/5">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
-                <div>
-                  <span
-                    class="inline-flex items-center px-2.5 py-1 bg-violet-500/10 text-violet-400 text-xs font-mono rounded-md mb-2">⚡
-                    Senior</span>
-                  <h3 class="text-xl font-bold text-slate-100">Senior Full Stack Developer</h3>
-                  <p class="text-violet-400 font-semibold"><a href="https://flairstech.com/" target="_blank"
-                      class="hover:underline">FlairsTech</a></p>
-                  <p class="text-slate-500 text-xs mt-0.5">Cairo, Egypt</p>
+          <div class="accordion-item bg-navy-900 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 shadow-xl" id="exp-flairs">
+            <button onclick="toggleAccordion('exp-flairs')" class="w-full flex flex-col sm:flex-row sm:items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+              <div class="flex items-center gap-4">
+                <div class="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center border border-violet-500/20">
+                  <i data-lucide="briefcase" class="w-5 h-5 text-violet-400"></i>
                 </div>
-                <code
-                  class="text-xs text-slate-400 bg-navy-800 border border-white/10 px-3 py-1.5 rounded-lg whitespace-nowrap h-fit">Jul 2021 – Feb 2022</code>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-100 uppercase tracking-tight">Senior Full Stack Developer @ FlairsTech</h3>
+                </div>
               </div>
-              <ul class="space-y-3">
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-violet-400 flex-shrink-0 mt-0.5">▹</span><span><a href="https://www.scholarchip.com/"
-                      target="_blank" class="text-slate-300 font-bold hover:text-violet-400">ScholarChip
-                      (US EdTech):</a> Scaled portal systems for <span class="text-violet-300 font-semibold">200,000+
-                      students</span> and <span class="text-violet-300 font-semibold">500+ schools</span> across the US
-                    with deep SIS
-                    integrations.</span></li>
-              </ul>
-              <div class="mt-5 flex flex-wrap gap-2"><span class="tech-badge">.NET Core</span><span
-                  class="tech-badge">Angular</span><span class="tech-badge">SQL Server</span><span
-                  class="tech-badge">Oracle DB</span><span class="tech-badge">REST API</span></div>
+              <div class="flex items-center gap-6 mt-4 sm:mt-0">
+                <code class="text-xs text-slate-400 font-mono">Jul 2021 – Feb 2022</code>
+                <i data-lucide="plus" class="accordion-icon w-5 h-5 text-slate-500 transition-transform duration-300"></i>
+              </div>
+            </button>
+            <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out">
+              <div class="overflow-hidden">
+                <div class="px-6 pb-8 pt-2">
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                      <div class="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-violet-400"></i>
+                          <span>Cairo, Egypt</span>
+                        </div>
+                        <a href="https://flairstech.com/" target="_blank" class="flex items-center gap-2 text-xs text-slate-400 hover:text-violet-400 transition-colors">
+                          <i data-lucide="external-link" class="w-3.5 h-3.5 text-violet-400"></i>
+                          <span>flairstech.com</span>
+                        </a>
+                      </div>
+                      <ul class="space-y-4 mb-6 text-sm text-slate-400">
+                        <li><span class="text-violet-400 mr-2">▹</span><strong class="text-slate-300">ScholarChip (US EdTech):</strong> Scaled portal systems for 200,000+ students and 500+ schools across the US with deep SIS integrations.</li>
+                      </ul>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge">.NET Core</span><span class="tech-badge">Angular</span><span class="tech-badge">SQL Server</span>
+                      </div>
+                    </div>
+                    <div class="hidden md:block w-28 h-28 flex-shrink-0">
+                      <div class="w-full h-full rounded-2xl bg-white/5 border border-white/10 p-4 flex items-center justify-center">
+                        <img src="assets/images/companies/FlairsTech_logo.png" alt="FlairsTech Logo" class="max-w-full max-h-full opacity-80" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- ITWorx -->
-          <div class="section-fade group flex gap-8">
-            <div class="hidden md:flex flex-col items-center pt-1.5 flex-shrink-0">
-              <div
-                class="w-4 h-4 rounded-full bg-gradient-to-br from-cyan-500 to-emerald-500 border-2 border-navy-950 group-hover:scale-125 z-10 transition-transform">
-              </div>
-            </div>
-            <div
-              class="flex-1 p-6 sm:p-8 rounded-2xl bg-navy-900 border border-white/10 hover:border-cyan-500/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-500/5">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
-                <div>
-                  <span
-                    class="inline-flex items-center px-2.5 py-1 bg-cyan-500/10 text-cyan-400 text-xs font-mono rounded-md mb-2">⚡
-                    Senior</span>
-                  <h3 class="text-xl font-bold text-slate-100">Senior Software Engineer</h3>
-                  <p class="text-cyan-400 font-semibold"><a href="https://www.itworx.com/" target="_blank"
-                      class="hover:underline">ITWorx</a></p>
-                  <p class="text-slate-500 text-xs mt-0.5">Cairo, Egypt</p>
+          <div class="accordion-item bg-navy-900 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 shadow-xl" id="exp-itworx">
+            <button onclick="toggleAccordion('exp-itworx')" class="w-full flex flex-col sm:flex-row sm:items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors">
+              <div class="flex items-center gap-4">
+                <div class="h-10 w-10 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                  <i data-lucide="briefcase" class="w-5 h-5 text-cyan-400"></i>
                 </div>
-                <code
-                  class="text-xs text-slate-400 bg-navy-800 border border-white/10 px-3 py-1.5 rounded-lg whitespace-nowrap h-fit">Apr 2020 – Jul 2021</code>
+                <div>
+                  <h3 class="text-lg font-bold text-slate-100 uppercase tracking-tight">Senior Software Engineer @ ITWorx</h3>
+                </div>
               </div>
-              <ul class="space-y-3">
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-cyan-400 flex-shrink-0 mt-0.5">▹</span><span><a href="https://www.syngenta.com/"
-                      target="_blank" class="text-slate-300 font-bold hover:text-cyan-400">Bio-Tech
-                      Enterprise Lab:</a> Confidential lab application to streamline biological experiment
-                    recording and execution.</span></li>
-                <li class="flex gap-3 text-sm text-slate-400"><span
-                    class="text-cyan-400 flex-shrink-0 mt-0.5">▹</span><span><a href="https://www.edu.gov.qa/en/"
-                      target="_blank" class="text-slate-300 font-bold hover:text-cyan-400">Qatar
-                      Government Systems:</a> Confidential document flow management system for a Qatari Government
-                    entity.</span></li>
-              </ul>
-              <div class="mt-5 flex flex-wrap gap-2"><span class="tech-badge">.NET Core</span><span
-                  class="tech-badge">NodeJS</span><span class="tech-badge">Angular</span><span
-                  class="tech-badge">AWS</span><span class="tech-badge">AWS Lambda</span><span class="tech-badge">EF
-                  Core</span><span class="tech-badge">SQL Server</span></div>
+              <div class="flex items-center gap-6 mt-4 sm:mt-0">
+                <code class="text-xs text-slate-400 font-mono">Apr 2020 – Jul 2021</code>
+                <i data-lucide="plus" class="accordion-icon w-5 h-5 text-slate-500 transition-transform duration-300"></i>
+              </div>
+            </button>
+            <div class="accordion-content grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out">
+              <div class="overflow-hidden">
+                <div class="px-6 pb-8 pt-2">
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                      <div class="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-cyan-400"></i>
+                          <span>Cairo, Egypt</span>
+                        </div>
+                      </div>
+                      <ul class="space-y-4 mb-6 text-sm text-slate-400">
+                        <li><span class="text-cyan-400 mr-2">▹</span><strong class="text-slate-300">Bio-Tech Enterprise Lab:</strong> Confidential lab application to streamline biological experiment recording and execution.</li>
+                        <li><span class="text-cyan-400 mr-2">▹</span><strong class="text-slate-300">Qatar Gov:</strong> Document flow management system for a Qatari Government entity.</li>
+                      </ul>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge">.NET Core</span><span class="tech-badge">NodeJS</span><span class="tech-badge">Angular</span><span class="tech-badge">AWS</span>
+                      </div>
+                    </div>
+                    <div class="hidden md:block w-28 h-28 flex-shrink-0">
+                      <div class="w-full h-full rounded-2xl bg-white/5 border border-white/10 p-4 flex items-center justify-center">
+                        <img src="assets/images/companies/ITWorx_logo.svg" alt="ITWorx Logo" class="max-w-full max-h-full opacity-80" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
 
           <!-- Earlier -->
           <div class="section-fade group flex gap-8">

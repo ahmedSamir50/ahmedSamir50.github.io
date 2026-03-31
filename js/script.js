@@ -321,3 +321,20 @@ document.addEventListener('DOMContentLoaded', () => {
     yearEl.textContent = new Date().getFullYear();
   }
 });
+
+/* ---------- Experience Accordion Toggle ---------- */
+window.toggleAccordion = function(id) {
+  const item = document.getElementById(id);
+  const isOpen = item.classList.contains('open');
+  
+  // Close all other items
+  document.querySelectorAll('.accordion-item').forEach(el => {
+    el.classList.remove('open');
+  });
+  
+  // Toggle current item
+  if (!isOpen) {
+    item.classList.add('open');
+  }
+};
+
