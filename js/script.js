@@ -207,46 +207,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── Magnetic Cursor Glow ── */
 document.addEventListener('DOMContentLoaded', () => {
-  const glow = document.createElement('div');
-  glow.className = 'pointer-events-none fixed inset-0 transition-opacity duration-500 opacity-0 mix-blend-screen';
-  glow.style.zIndex = '-10'; // Keep behind content
-  document.body.appendChild(glow);
+  // Only initialize on devices with a precise pointer (mouse)
+  if (window.matchMedia("(pointer: fine)").matches) {
+    const glow = document.createElement('div');
+    glow.className = 'pointer-events-none fixed inset-0 transition-opacity duration-500 opacity-0 mix-blend-screen';
+    glow.style.zIndex = '-10'; // Keep behind content
+    document.body.appendChild(glow);
 
-  document.addEventListener('mousemove', (e) => {
-    glow.style.opacity = '1';
-    // Dynamic soft blue radial gradient following cursor
-    glow.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(59, 130, 246, 0.15), transparent 60%)`;
-  });
+    document.addEventListener('mousemove', (e) => {
+      glow.style.opacity = '1';
+      // Dynamic soft blue radial gradient following cursor
+      glow.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(59, 130, 246, 0.15), transparent 60%)`;
+    });
+  }
 });
 
 /* ── 3D Card Tilt Effect ── */
 document.addEventListener('DOMContentLoaded', () => {
-  // Target stat cards, project wrappers, and experience list items
-  const tiltElements = document.querySelectorAll('.stat-card, #projects .section-fade.group, #experience .bg-navy-900');
+  // Only initialize on devices with a precise pointer (mouse)
+  if (window.matchMedia("(pointer: fine)").matches) {
+    // Target stat cards, project wrappers, and experience list items
+    const tiltElements = document.querySelectorAll('.stat-card, #projects .section-fade.group, #experience .bg-navy-900');
 
-  tiltElements.forEach(el => {
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    tiltElements.forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate rotation (-4 to 4 degrees)
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+        
+        el.style.transform = `perspective(1000px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        el.style.transition = 'transform 0.1s ease-out';
+      });
       
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      // Calculate rotation (-4 to 4 degrees)
-      const rotateX = ((y - centerY) / centerY) * -4;
-      const rotateY = ((x - centerX) / centerX) * 4;
-      
-      el.style.transform = `perspective(1000px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      el.style.transition = 'transform 0.1s ease-out';
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
+        // Spring back to original state with bounce
+        el.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+      });
     });
-    
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
-      // Spring back to original state with bounce
-      el.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
-    });
-  });
+  }
 });
 
 /* ── Project Modal Logic ── */
@@ -258,7 +264,7 @@ const projectData = {
   },
   'appify': {
     title: 'Appify — No-Code Platform',
-    desc: '<div class="space-y-4"><p><strong class="text-violet-400">Situation:</strong> Non-technical business teams required a rapid way to deploy functional mobile apps without heavy engineering overhead.</p><p><strong class="text-violet-400">Task:</strong> Architect a scalable drag-and-drop mobile app builder with automated, intelligent backend scaffolding.</p><p><strong class="text-violet-400">Action:</strong> Architected a full-stack microservices architecture leveraging Ionic/Capacitor for the cross-platform frontend builder, coupled with a dynamic .NET Core backend that automatically generates secure REST APIs and PostgreSQL schemas on the fly.</p><p><strong class="text-violet-400">Result:</strong> Empowered 100+ B2B clients to ship production-ready applications 10x faster natively to App Stores, scaling efficiently on a Kubernetes infrastructure.</p></div>',
+    desc: '<div class="space-y-4"><p><strong class="text-violet-400">Situation:</strong> Non-technical business teams required a rapid way to deploy functional mobile apps without heavy engineering overhead.</p><p><strong class="text-violet-400">Task:</strong> Architect a scalable drag-and-drop mobile app builder with automated, intelligent backend scaffolding.</p><p><strong class="text-violet-400">Action:</strong> Designed a full-stack microservices ecosystem leveraging Ionic/Capacitor for the cross-platform frontend builder, coupled with a dynamic .NET Core backend that automatically generates secure REST APIs and PostgreSQL schemas on the fly.</p><p><strong class="text-violet-400">Result:</strong> Empowered 100+ B2B clients to ship production-ready applications 10x faster natively to App Stores, scaling efficiently on a Kubernetes infrastructure.</p></div>',
     tech: ['Ionic/Capacitor', 'Angular v22', '.NET Core', 'Docker', 'PostgreSQL', 'Microservices']
   },
   'eazy-order': {

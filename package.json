@@ -1,0 +1,17 @@
+{
+  "name": "ahmedsamir_githubpageprofile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --minify",
+    "watch": "npx @tailwindcss/cli -i ./css/input.css -o ./css/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^4.2.2",
+    "@tailwindcss/cli": "^4.2.2"
+  }
+}
