@@ -110,17 +110,208 @@ function calculateYearsOfExperience() {
     years--;
     months += 12;
   }
-  
-  // Rule: more than 5 months counts as an extra year
   if (months > 5) {
     years++;
   }
   
   const expValueElements = document.querySelectorAll('.years-exp-value');
   expValueElements.forEach(el => {
-    el.textContent = years;
+    el.setAttribute('data-target', years);
+    el.classList.add('num-counter');
+    el.textContent = '0';
   });
 }
 
-document.addEventListener('DOMContentLoaded', calculateYearsOfExperience);
+/* ── Number Counting Animation ── */
+function initCounters() {
+  const counters = document.querySelectorAll('.num-counter');
+  const duration = 2500; // lengthened duration
+  
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        if (isNaN(target)) return;
+        
+        const startTime = performance.now();
+        
+        function updateCounter(currentTime) {
+          const elapsedTime = currentTime - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          // Ease Out Quad gives a more natural slow-down without freezing
+          const easeOut = 1 - (1 - progress) * (1 - progress);
+          
+          // Math.round resolves the "hang" at target-1 values.
+          el.textContent = Math.round(easeOut * target);
+          
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            el.textContent = target; 
+          }
+        }
+        
+        requestAnimationFrame(updateCounter);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  counters.forEach(c => counterObserver.observe(c));
+}
 
+document.addEventListener('DOMContentLoaded', () => {
+  calculateYearsOfExperience();
+  initCounters();
+});
+
+/* ── Typewriter Effect ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const line1 = document.getElementById('typewriter-line1');
+  const line2 = document.getElementById('typewriter-line2');
+  const cursor = document.getElementById('typewriter-cursor');
+  if (!line1 || !line2) return;
+  
+  const text1 = "Ahmed Samir";
+  const text2 = "Abd El Aal";
+  let i = 0, j = 0;
+  
+  // Give it slightly randomized human pacing
+  function typeLine1() {
+    if (i < text1.length) {
+      line1.textContent += text1.charAt(i);
+      i++;
+      setTimeout(typeLine1, 60 + Math.random() * 60);
+    } else {
+      setTimeout(typeLine2, 200);
+    }
+  }
+  
+  function typeLine2() {
+    if (j < text2.length) {
+      line2.textContent += text2.charAt(j);
+      j++;
+      setTimeout(typeLine2, 60 + Math.random() * 60);
+    } else {
+      setTimeout(() => cursor.classList.add('opacity-0'), 3000); // fade out cursor after 3 secs
+    }
+  }
+  
+  // Start typing after initial fade-up animation (0.7s)
+  setTimeout(() => {
+    if (cursor) cursor.classList.remove('opacity-0');
+    typeLine1();
+  }, 700);
+});
+
+/* ── Magnetic Cursor Glow ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const glow = document.createElement('div');
+  glow.className = 'pointer-events-none fixed inset-0 transition-opacity duration-500 opacity-0 mix-blend-screen';
+  glow.style.zIndex = '-10'; // Keep behind content
+  document.body.appendChild(glow);
+
+  document.addEventListener('mousemove', (e) => {
+    glow.style.opacity = '1';
+    // Dynamic soft blue radial gradient following cursor
+    glow.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(59, 130, 246, 0.15), transparent 60%)`;
+  });
+});
+
+/* ── 3D Card Tilt Effect ── */
+document.addEventListener('DOMContentLoaded', () => {
+  // Target stat cards, project wrappers, and experience list items
+  const tiltElements = document.querySelectorAll('.stat-card, #projects .section-fade.group, #experience .bg-navy-900');
+
+  tiltElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      // Calculate rotation (-4 to 4 degrees)
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      
+      el.style.transform = `perspective(1000px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      el.style.transition = 'transform 0.1s ease-out';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
+      // Spring back to original state with bounce
+      el.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+    });
+  });
+});
+
+/* ── Project Modal Logic ── */
+const projectData = {
+  'pro-stores': {
+    title: 'Pro Stores Manager',
+    desc: '<p>Comprehensive details about Pro Stores Manager. The system requires extreme resilience and operational uptime, so we architected an Offline-First approach utilizing local SQLite synchronization engines that connect to central nodes upon reconnections.</p>',
+    tech: ['.NET MAUI', 'Blazor Hybrid', 'SQLite', 'Offline-First', 'Hangfire']
+  },
+  'appify': {
+    title: 'Appify — No-Code Platform',
+    desc: '<p>A modern No-Code tool allowing companies to build mobile apps directly via a Drag-and-Drop web builder. The backend automatically scaffolds databases, generates REST APIs via microservices, and handles containerization.</p>',
+    tech: ['Ionic/Capacitor', 'Angular v22', '.NET Core', 'Docker', 'PostgreSQL']
+  },
+  'eazy-order': {
+    title: 'Eazy-Order — Cloud POS',
+    desc: '<p>High-performance Restaurant Management System that operates entirely in the Cloud. Utilizing RabbitMQ to process thousands of async orders simultaneously without locking up front-end POS terminals.</p>',
+    tech: ['RabbitMQ', '.NET Core APIs', 'PostgreSQL', 'Real-Time Sync']
+  }
+};
+
+window.openProjectModal = function(id) {
+  const modal = document.getElementById('project-modal');
+  const modalContent = document.getElementById('project-modal-content');
+  const data = projectData[id];
+  if (!modal || !data) return;
+  
+  // Populate Data
+  document.getElementById('modal-title').textContent = data.title;
+  document.getElementById('modal-description').innerHTML = data.desc;
+  
+  const techContainer = document.getElementById('modal-tech');
+  techContainer.innerHTML = data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
+  
+  // Show Modal
+  modal.classList.remove('opacity-0', 'pointer-events-none');
+  modalContent.classList.remove('scale-95');
+  modalContent.classList.add('scale-100');
+  
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+  
+  // Re-initialize any new icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+};
+
+window.closeProjectModal = function() {
+  const modal = document.getElementById('project-modal');
+  const modalContent = document.getElementById('project-modal-content');
+  if (!modal) return;
+  
+  modal.classList.add('opacity-0', 'pointer-events-none');
+  modalContent.classList.remove('scale-100');
+  modalContent.classList.add('scale-95');
+  
+  // Restore scroll
+  document.body.style.overflow = '';
+};
+
+/* ── Dynamic Footer Year ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+});
