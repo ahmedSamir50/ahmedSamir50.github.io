@@ -320,6 +320,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+  
+  // Check for posts on load
+  initPosts();
 });
 
 /* ---------- Experience Accordion Toggle ---------- */
@@ -337,4 +340,92 @@ window.toggleAccordion = function(id) {
     item.classList.add('open');
   }
 };
+
+/* ---------- Project Filtering ---------- */
+window.filterProjects = (filter) => {
+  const cards = document.querySelectorAll('.project-card');
+  const buttons = document.querySelectorAll('.project-filter-btn');
+  
+  buttons.forEach(btn => {
+    if (btn.getAttribute('data-filter') === filter) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  cards.forEach(card => {
+    const categories = card.getAttribute('data-category').split(' ');
+    if (filter === 'all' || categories.includes(filter)) {
+      card.style.display = 'flex';
+      setTimeout(() => card.style.opacity = '1', 10);
+    } else {
+      card.style.opacity = '0';
+      setTimeout(() => card.style.display = 'none', 300);
+    }
+  });
+};
+
+/* ---------- Dynamic Posts Engine ---------- */
+async function initPosts() {
+  const container = document.getElementById('posts-container');
+  const grid = document.getElementById('posts-grid');
+  if (!container || !grid) return;
+  
+  try {
+    const response = await fetch('assets/data/posts.json');
+    if (!response.ok) return;
+    
+    const posts = await response.json();
+    if (posts && posts.length > 0) {
+      container.classList.remove('hidden');
+      grid.innerHTML = posts.map(post => `
+        <div class="p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-blue-500/30 transition-all cursor-pointer group" onclick="openPostModal('${post.id}')">
+          <div class="aspect-video rounded-xl mb-4 overflow-hidden bg-white/5 border border-white/10">
+            <img src="${post.coverImage}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-[10px] font-mono text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">${post.date}</span>
+            <span class="text-[10px] font-mono text-slate-500">${post.readTime}</span>
+          </div>
+          <h3 class="font-bold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">${post.title}</h3>
+          <div class="flex flex-wrap gap-2">
+            ${post.tags.map(tag => `<span class="text-[9px] uppercase tracking-wider font-bold text-slate-500">#${tag}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+      
+      if (window.lucide) window.lucide.createIcons();
+    }
+  } catch (error) {
+    // Fail silently if no posts exist
+  }
+}
+
+window.openPostModal = async (id) => {
+  const modal = document.getElementById('post-reader-modal');
+  const content = document.getElementById('post-reader-content');
+  
+  try {
+    const response = await fetch(`assets/posts/${id}/content.html`);
+    if (!response.ok) throw new Error('Post template not found');
+    
+    const html = await response.text();
+    content.innerHTML = html;
+    
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+    
+    if (window.lucide) window.lucide.createIcons();
+  } catch (err) {
+    console.error('Error loading post:', err);
+  }
+};
+
+window.closePostModal = () => {
+  const modal = document.getElementById('post-reader-modal');
+  modal.classList.add('opacity-0', 'pointer-events-none');
+  document.body.style.overflow = '';
+};
+
 

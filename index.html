@@ -221,6 +221,58 @@
         </div>
       </div>
     </div>
+  <!-- CORE EXPERTISE -->
+  <section id="expertise" class="py-24 sm:py-32 bg-navy-950/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="section-fade text-center mb-16">
+        <span class="text-blue-400 text-xs font-mono font-medium tracking-widest uppercase">Specializations</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-50 mt-2">Core Expertise</h2>
+        <div class="mt-4 h-1 w-16 bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Expertize 1 -->
+        <div class="section-fade p-8 rounded-3xl bg-navy-900 border border-white/10 hover:border-blue-500/30 transition-all hover:-translate-y-2 group">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:scale-110 transition-transform">
+            <i data-lucide="network" class="w-7 h-7 text-blue-400"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-100 mb-3">Distributed Systems</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Architecting resilient microservices ecosystems using <span class="text-blue-400">.NET Core</span>, 
+            <span class="text-blue-400">Kafka</span>, and <span class="text-blue-400">RabbitMQ</span>. 
+            Focused on high-throughput EDA and resilient service communication.
+          </p>
+        </div>
+
+        <!-- Expertize 2 -->
+        <div class="section-fade p-8 rounded-3xl bg-navy-900 border border-white/10 hover:border-violet-500/30 transition-all hover:-translate-y-2 group">
+          <div class="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mb-6 border border-violet-500/20 group-hover:scale-110 transition-transform">
+            <i data-lucide="layout" class="w-7 h-7 text-violet-400"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-100 mb-3">Enterprise Front-ends</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Mastering complex UI architectures with <span class="text-violet-400">Angular</span> and 
+            <span class="text-violet-400">Micro-frontends</span>. Specialized in building 
+            state-heavy, high-performance dashboards and ERP portals.
+          </p>
+        </div>
+
+        <!-- Expertize 3 -->
+        <div class="section-fade p-8 rounded-3xl bg-navy-900 border border-white/10 hover:border-emerald-500/30 transition-all hover:-translate-y-2 group">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:scale-110 transition-transform">
+            <i data-lucide="shield-check" class="w-7 h-7 text-emerald-400"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-100 mb-3">Hybrid & Cloud Arch.</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Expert in <span class="text-emerald-400">Offline-First</span> mobile solutions and 
+            <span class="text-emerald-400">AWS Cloud</span> integrations. Bridging the gap 
+            between native capabilities and cloud scalability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   </section>
 
   <!-- EXPERIENCE -->
@@ -612,9 +664,17 @@
         <h2 class="text-3xl sm:text-4xl font-bold text-slate-50 mt-2">Key Projects</h2>
         <div class="mt-4 h-1 w-16 bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mx-auto"></div>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div onclick="openProjectModal('pro-stores')"
-          class="cursor-pointer section-fade group flex flex-col p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-blue-500/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10">
+      <div class="section-fade flex flex-wrap justify-center gap-3 mb-12">
+        <button onclick="filterProjects('all')" class="project-filter-btn px-6 py-2 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition-all text-sm active" data-filter="all">All</button>
+        <button onclick="filterProjects('microservices')" class="project-filter-btn px-6 py-2 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition-all text-sm" data-filter="microservices">Microservices</button>
+        <button onclick="filterProjects('enterprise')" class="project-filter-btn px-6 py-2 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition-all text-sm" data-filter="enterprise">Enterprise Systems</button>
+        <button onclick="filterProjects('hybrid-mobile')" class="project-filter-btn px-6 py-2 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-blue-500/50 transition-all text-sm" data-filter="hybrid-mobile">Hybrid Mobile</button>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+
+        <div onclick="openProjectModal('pro-stores')" data-category="hybrid-mobile enterprise"
+          class="project-card cursor-pointer section-fade group flex flex-col p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-blue-500/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10">
           <div class="flex items-start justify-between mb-4">
             <div
               class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-violet-500/20 border border-blue-500/20 flex items-center justify-center">
@@ -631,8 +691,8 @@
           <div class="mt-5 flex flex-wrap gap-2"><span class="tech-tag">.NET MAUI</span><span class="tech-tag">Blazor
               Hybrid</span><span class="tech-tag">SQLite</span><span class="tech-tag">Offline-First</span></div>
         </div>
-        <div onclick="openProjectModal('appify')"
-          class="cursor-pointer section-fade group flex flex-col p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-violet-500/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-500/10">
+        <div onclick="openProjectModal('appify')" data-category="microservices hybrid-mobile"
+          class="project-card cursor-pointer section-fade group flex flex-col p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-violet-500/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-500/10">
           <div class="flex items-start justify-between mb-4">
             <div
               class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-pink-500/20 border border-violet-500/20 flex items-center justify-center">
@@ -650,8 +710,8 @@
               class="tech-tag">Microservices</span><span class="tech-tag">RabbitMQ</span><span
               class="tech-tag">PostgreSQL</span></div>
         </div>
-        <div onclick="openProjectModal('eazy-order')"
-          class="cursor-pointer section-fade group flex flex-col p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-cyan-500/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/10">
+        <div onclick="openProjectModal('eazy-order')" data-category="microservices enterprise"
+          class="project-card cursor-pointer section-fade group flex flex-col p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-cyan-500/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/10">
           <div class="flex items-start justify-between mb-4">
             <div
               class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 border border-cyan-500/20 flex items-center justify-center">
@@ -666,6 +726,37 @@
             System with RabbitMQ async order processing and resilient real-time .NET Core REST APIs.</p>
           <div class="mt-5 flex flex-wrap gap-2"><span class="tech-tag">RabbitMQ</span><span class="tech-tag">.NET
               Core</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Real-Time</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL WRITING & ARCHITECTURE (Posts Engine) -->
+  <section id="posts-container" class="py-24 sm:py-32 bg-navy-950/50 hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="section-fade text-center mb-16">
+        <span class="text-blue-400 text-xs font-mono font-medium tracking-widest uppercase">Knowledge Sharing</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-50 mt-2">Architecture & Tech Insights</h2>
+        <div class="mt-4 h-1 w-16 bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+        <!-- Dynamically injected by script.js -->
+      </div>
+    </div>
+
+    <!-- Post Detail Modal View (Initially hidden) -->
+    <div id="post-reader-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300">
+      <div class="absolute inset-0 bg-navy-950/90 backdrop-blur-md" onclick="closePostModal()"></div>
+      <div class="relative w-full max-w-4xl max-h-[90vh] bg-navy-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
+        <!-- Close Button -->
+        <button onclick="closePostModal()" class="absolute top-6 right-6 z-10 p-2 rounded-full bg-navy-800 text-slate-400 hover:text-white border border-white/10 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        
+        <!-- Modal Content Scrollable Area -->
+        <div class="overflow-y-auto p-8 sm:p-12" id="post-reader-content">
+          <!-- Dynamically loaded content.html will appear here -->
         </div>
       </div>
     </div>
