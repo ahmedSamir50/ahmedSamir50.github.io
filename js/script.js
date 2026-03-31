@@ -253,18 +253,18 @@ document.addEventListener('DOMContentLoaded', () => {
 const projectData = {
   'pro-stores': {
     title: 'Pro Stores Manager',
-    desc: '<p>Comprehensive details about Pro Stores Manager. The system requires extreme resilience and operational uptime, so we architected an Offline-First approach utilizing local SQLite synchronization engines that connect to central nodes upon reconnections.</p>',
-    tech: ['.NET MAUI', 'Blazor Hybrid', 'SQLite', 'Offline-First', 'Hangfire']
+    desc: '<div class="space-y-4"><p><strong class="text-emerald-400">Situation:</strong> Retail environments faced severe disruptions and data loss during frequent network outages.</p><p><strong class="text-emerald-400">Task:</strong> Architect a bulletproof SaaS Point-of-Sale system that guarantees 100% operational uptime irrespective of connection status.</p><p><strong class="text-emerald-400">Action:</strong> Engineered a robust Offline-First application using .NET MAUI Blazor Hybrid, featuring an advanced local SQLite synchronization engine that seamlessly maps to centralized nodes via RabbitMQ when connectivity resumes.</p><p><strong class="text-emerald-400">Result:</strong> Completely eliminated downtime for POS terminals, securing 50,000+ daily transactions with zero data-loss during complex reconnection phases.</p></div>',
+    tech: ['.NET MAUI', 'Blazor Hybrid', 'SQLite', 'Offline-First', 'Hangfire', 'RabbitMQ']
   },
   'appify': {
     title: 'Appify — No-Code Platform',
-    desc: '<p>A modern No-Code tool allowing companies to build mobile apps directly via a Drag-and-Drop web builder. The backend automatically scaffolds databases, generates REST APIs via microservices, and handles containerization.</p>',
-    tech: ['Ionic/Capacitor', 'Angular v22', '.NET Core', 'Docker', 'PostgreSQL']
+    desc: '<div class="space-y-4"><p><strong class="text-violet-400">Situation:</strong> Non-technical business teams required a rapid way to deploy functional mobile apps without heavy engineering overhead.</p><p><strong class="text-violet-400">Task:</strong> Architect a scalable drag-and-drop mobile app builder with automated, intelligent backend scaffolding.</p><p><strong class="text-violet-400">Action:</strong> Architected a full-stack microservices architecture leveraging Ionic/Capacitor for the cross-platform frontend builder, coupled with a dynamic .NET Core backend that automatically generates secure REST APIs and PostgreSQL schemas on the fly.</p><p><strong class="text-violet-400">Result:</strong> Empowered 100+ B2B clients to ship production-ready applications 10x faster natively to App Stores, scaling efficiently on a Kubernetes infrastructure.</p></div>',
+    tech: ['Ionic/Capacitor', 'Angular v22', '.NET Core', 'Docker', 'PostgreSQL', 'Microservices']
   },
   'eazy-order': {
     title: 'Eazy-Order — Cloud POS',
-    desc: '<p>High-performance Restaurant Management System that operates entirely in the Cloud. Utilizing RabbitMQ to process thousands of async orders simultaneously without locking up front-end POS terminals.</p>',
-    tech: ['RabbitMQ', '.NET Core APIs', 'PostgreSQL', 'Real-Time Sync']
+    desc: '<div class="space-y-4"><p><strong class="text-cyan-400">Situation:</strong> High-traffic restaurants experienced severe lag and order-dropping during peak rush hours using legacy monolithic systems.</p><p><strong class="text-cyan-400">Task:</strong> Develop a high-performance Restaurant Management System capable of handling thousands of concurrent requests seamlessly.</p><p><strong class="text-cyan-400">Action:</strong> Integrated RabbitMQ advanced message brokering to decouple order taking from backend processing. Built robust real-time SignalR hubs to instantly update kitchen displays and driver tracking apps without database polling.</p><p><strong class="text-cyan-400">Result:</strong> Successfully processed 10,000+ concurrent orders at peak hours with sub-200ms latency, drastically improving operational agility.</p></div>',
+    tech: ['RabbitMQ', '.NET Core APIs', 'PostgreSQL', 'Real-Time Sync', 'SignalR']
   }
 };
 
