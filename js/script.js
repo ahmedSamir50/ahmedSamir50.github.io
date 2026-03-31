@@ -97,3 +97,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+/* ── Dynamic Experience Calculation ── */
+function calculateYearsOfExperience() {
+  const startDate = new Date('2018-01-01');
+  const now = new Date();
+  
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  
+  // Rule: more than 5 months counts as an extra year
+  if (months > 5) {
+    years++;
+  }
+  
+  const expValueElements = document.querySelectorAll('.years-exp-value');
+  expValueElements.forEach(el => {
+    el.textContent = years;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', calculateYearsOfExperience);
+
