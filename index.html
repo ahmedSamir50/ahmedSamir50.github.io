@@ -1,82 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <meta name="description"
-    content="Ahmed Samir – Lead Full Stack Engineer (.NET | Angular | Mobile Hybrid). 9+ years delivering mission-critical enterprise systems for GCC/MENA markets." />
-  <meta name="author" content="Ahmed Samir Abd El Aal" />
-  <meta property="og:title" content="Ahmed Samir | Lead Full Stack Engineer" />
-  <meta property="og:url" content="https://ahmedsamir50.github.io" />
-  <title>Ahmed Samir | Lead Full Stack Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
-    rel="stylesheet" />
-
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body class="bg-navy-950 text-slate-100 font-inter antialiased">
-
-  <!-- NAV -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#hero" class="flex items-center gap-2 group">
-          <div
-            class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">
-            AS</div>
-          <span class="font-semibold text-slate-200 text-sm hidden sm:block">Ahmed Samir</span>
-        </a>
-        <div class="hidden md:flex items-center gap-1">
-          <a href="#about"
-            class="nav-link px-3 py-2 text-sm text-slate-400 hover:text-blue-400 transition-colors rounded-lg hover:bg-white/5">About</a>
-          <a href="#experience"
-            class="nav-link px-3 py-2 text-sm text-slate-400 hover:text-blue-400 transition-colors rounded-lg hover:bg-white/5">Experience</a>
-          <a href="#skills"
-            class="nav-link px-3 py-2 text-sm text-slate-400 hover:text-blue-400 transition-colors rounded-lg hover:bg-white/5">Skills</a>
-          <a href="#projects"
-            class="nav-link px-3 py-2 text-sm text-slate-400 hover:text-blue-400 transition-colors rounded-lg hover:bg-white/5">Projects</a>
-          <a href="#certificates"
-            class="nav-link px-3 py-2 text-sm text-slate-400 hover:text-blue-400 transition-colors rounded-lg hover:bg-white/5">Certificates</a>
-          <a href="#contact"
-            class="nav-link px-3 py-2 text-sm text-slate-400 hover:text-blue-400 transition-colors rounded-lg hover:bg-white/5">Contact</a>
-        </div>
-        <div class="flex items-center gap-3">
-          <a href="https://drive.google.com/file/d/1B9kyD2vSlzJB9bRIN5AzTpw4DzPb5KyI/view?usp=sharing" target="_blank"
-            class="hidden sm:flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-blue-500/25">
-            <i data-lucide="external-link" class="w-4 h-4"></i>CV
-          </a>
-          <button id="mobile-menu-btn"
-            class="md:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5">
-            <i data-lucide="menu" class="w-5 h-5"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-navy-950/95 backdrop-blur-xl">
-      <div class="px-4 py-3 space-y-1">
-        <a href="#about"
-          class="block px-3 py-2 text-sm text-slate-400 hover:text-blue-400 hover:bg-white/5 rounded-lg">About</a>
-        <a href="#experience"
-          class="block px-3 py-2 text-sm text-slate-400 hover:text-blue-400 hover:bg-white/5 rounded-lg">Experience</a>
-        <a href="#skills"
-          class="block px-3 py-2 text-sm text-slate-400 hover:text-blue-400 hover:bg-white/5 rounded-lg">Skills</a>
-        <a href="#projects"
-          class="block px-3 py-2 text-sm text-slate-400 hover:text-blue-400 hover:bg-white/5 rounded-lg">Projects</a>
-        <a href="#certificates"
-          class="block px-3 py-2 text-sm text-slate-400 hover:text-blue-400 hover:bg-white/5 rounded-lg">Certificates</a>
-        <a href="#contact"
-          class="block px-3 py-2 text-sm text-slate-400 hover:text-blue-400 hover:bg-white/5 rounded-lg">Contact</a>
-        <a href="https://drive.google.com/file/d/1B9kyD2vSlzJB9bRIN5AzTpw4DzPb5KyI/view?usp=sharing" target="_blank"
-          class="flex items-center gap-2 px-3 py-2 bg-blue-600/20 text-blue-400 text-sm rounded-lg"><i
-            data-lucide="external-link" class="w-4 h-4"></i>Download CV</a>
-      </div>
-    </div>
-  </nav>
+---
+layout: default
+---
 
   <!-- HERO -->
   <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -731,38 +655,7 @@
     </div>
   </section>
 
-  <!-- TECHNICAL WRITING & ARCHITECTURE (Posts Engine) -->
-  <section id="posts-container" class="py-24 sm:py-32 bg-navy-950/50 hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="section-fade text-center mb-16">
-        <span class="text-blue-400 text-xs font-mono font-medium tracking-widest uppercase">Knowledge Sharing</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-slate-50 mt-2">Architecture & Tech Insights</h2>
-        <div class="mt-4 h-1 w-16 bg-gradient-to-r from-blue-500 to-violet-500 rounded-full mx-auto"></div>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
-        <!-- Dynamically injected by script.js -->
-      </div>
-    </div>
 
-    <!-- Post Detail Modal View (Initially hidden) -->
-    <div id="post-reader-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300">
-      <div class="absolute inset-0 bg-navy-950/90 backdrop-blur-md" onclick="closePostModal()"></div>
-      <div class="relative w-full max-w-4xl max-h-[90vh] bg-navy-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl">
-        <!-- Close Button -->
-        <button onclick="closePostModal()" class="absolute top-6 right-6 z-10 p-2 rounded-full bg-navy-800 text-slate-400 hover:text-white border border-white/10 transition-all">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-        
-        <!-- Modal Content Scrollable Area -->
-        <div class="overflow-y-auto p-8 sm:p-12" id="post-reader-content">
-          <!-- Dynamically loaded content.html will appear here -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  </section>
 
   <!-- CERTIFICATES -->
   <section id="certificates" class="py-24 sm:py-32">
@@ -960,32 +853,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/5 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <div
-          class="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-white font-bold text-xs">
-          AS</div>
-        <span class="text-slate-500 text-sm">Ahmed Samir Abd El Aal</span>
-      </div>
-      <p class="text-slate-600 text-xs font-mono">© <span id="current-year">2026</span> · Engineered in Cairo, Egypt.
-      </p>
-      <div class="flex items-center gap-3">
-        <a href="https://github.com/ahmedSamir50" target="_blank" rel="noopener"
-          class="text-slate-600 hover:text-slate-400 transition-colors text-xs">GitHub</a>
-        <a href="http://www.linkedin.com/in/ahmed-samir-423875106" target="_blank" rel="noopener"
-          class="text-slate-600 hover:text-slate-400 transition-colors text-xs">LinkedIn</a>
-        <a href="mailto:ahmed.samir.abdelaal@gmail.com"
-          class="text-slate-600 hover:text-slate-400 transition-colors text-xs">Email</a>
-      </div>
-    </div>
-  </footer>
 
-  <!-- Scroll to Top -->
-  <button id="scroll-top" aria-label="Scroll to top">
-    <i data-lucide="chevron-up" class="w-5 h-5"></i>
-  </button>
 
   <!-- PROJECT MODAL TEMPLATE (Hidden by default) -->
   <div id="project-modal"
@@ -1026,10 +894,4 @@
       </div>
     </div>
   </div>
-
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script>lucide.createIcons();</script>
-  <script src="js/script.js"></script>
-</body>
-
-</html>
+

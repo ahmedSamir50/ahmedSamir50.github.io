@@ -6,3 +6,6 @@ HelperFiles/
 
 # Skills reference folder
 SKILLS/
+
+# NPM dependencies
+node_modules/
