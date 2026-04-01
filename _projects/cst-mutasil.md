@@ -4,6 +4,8 @@ title: "CST (Mutasil) Portal"
 slug: "cst-mutasil"
 categories: ["gov-enterprise", "digital-transformation"]
 company_logo: "assets/images/companies/ELm_logo.svg"
+beneficiary_logo: "assets/images/companies/cst_dark.svg"
+beneficiary_logo_theme: "dark"
 tech: [".NET Core", "EF Core", "Multi-tier Architecture", "Secure APIs"]
 icon: "radio"
 gradient_from: "blue-500"

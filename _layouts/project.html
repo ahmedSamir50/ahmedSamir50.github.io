@@ -13,22 +13,27 @@ layout: default
     </a>
 
     <!-- Project Header -->
-    <div class="section-fade mb-12">
-      <div class="flex flex-col sm:flex-row items-center gap-8 mb-8 text-center sm:text-left">
+    <div class="section-fade mb-16">
+      <div class="flex flex-col sm:flex-row items-center gap-10 mb-10 text-center sm:text-left">
         {% if page.company_logo %}
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 p-4 flex items-center justify-center shadow-xl backdrop-blur-sm">
-              <img src="{{ page.company_logo | relative_url }}" alt="Consultant Logo" class="max-w-full max-h-full logo-light opacity-90" />
+          <div class="flex flex-col items-center gap-3">
+            <div class="w-32 h-32 rounded-2xl flex items-center justify-center shadow-xl transition-all duration-300
+              {% if page.company_logo_theme == 'white' %}
+                bg-white p-6 border border-white/20
+              {% else %}
+                bg-navy-800/40 border border-white/10 p-7 backdrop-blur-md
+              {% endif %}">
+              <img src="{{ page.company_logo | relative_url }}" alt="Consultant Logo" class="max-w-full max-h-full object-contain {% unless page.company_logo_theme == 'white' %}filter brightness-110{% endunless %}" />
             </div>
-            <span class="text-[9px] font-mono uppercase tracking-tighter text-slate-500">Consultant</span>
+            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 font-bold">Consultant</span>
           </div>
         {% endif %}
 
         <div class="flex-1">
-          <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-50 tracking-tight">{{ page.title }}</h1>
-          <div class="flex flex-wrap justify-center sm:justify-start gap-3 mt-3">
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-50 tracking-tight leading-tight">{{ page.title }}</h1>
+          <div class="flex flex-wrap justify-center sm:justify-start gap-4 mt-6">
             {% for cat in page.categories %}
-              <span class="px-2.5 py-1 rounded-md bg-{{ page.gradient_from }}/10 text-{{ page.gradient_from }} text-[10px] font-bold uppercase tracking-wider font-mono border border-{{ page.gradient_from }}/20">
+              <span class="px-4 py-1.5 rounded-lg bg-{{ page.gradient_from }}/10 text-{{ page.gradient_from }} text-[11px] font-bold uppercase tracking-wider font-mono border border-{{ page.gradient_from }}/20 backdrop-blur-md">
                 {{ cat }}
               </span>
             {% endfor %}
@@ -36,15 +41,20 @@ layout: default
         </div>
 
         {% if page.beneficiary_logo %}
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-24 h-24 rounded-2xl bg-white/10 border border-white/20 p-4 flex items-center justify-center shadow-2xl backdrop-blur-md ring-1 ring-white/10">
-              <img src="{{ page.beneficiary_logo | relative_url }}" alt="Beneficiary Logo" class="max-w-full max-h-full logo-light" />
+          <div class="flex flex-col items-center gap-3">
+            <div class="w-36 h-36 rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-300
+              {% if page.beneficiary_logo_theme == 'white' %}
+                bg-white p-7 border border-white/20
+              {% else %}
+                bg-navy-800/50 border border-white/20 p-8 backdrop-blur-xl ring-1 ring-white/10
+              {% endif %}">
+              <img src="{{ page.beneficiary_logo | relative_url }}" alt="Beneficiary Logo" class="max-w-full max-h-full object-contain {% unless page.beneficiary_logo_theme == 'white' %}filter brightness-110{% endunless %}" />
             </div>
-            <span class="text-[9px] font-mono uppercase tracking-tighter text-blue-400">Beneficiary</span>
+            <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-blue-400 font-bold">Beneficiary</span>
           </div>
         {% endif %}
       </div>
-      <div class="h-1 w-24 bg-gradient-to-r from-{{ page.gradient_from }} to-{{ page.gradient_to }} rounded-full mx-auto sm:mx-0"></div>
+      <div class="h-1.5 w-32 bg-gradient-to-r from-{{ page.gradient_from }} to-{{ page.gradient_to }} rounded-full mx-auto sm:mx-0 mt-8 opacity-50"></div>
     </div>
 
     <!-- Main Content -->

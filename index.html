@@ -684,13 +684,9 @@ layout: default
         class="project-card flex flex-col section-fade group p-6 rounded-2xl bg-navy-900 border border-white/10 hover:border-{{ project.gradient_from }}/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-{{ project.gradient_from }}/10 {% if forloop.index > 3 %}hidden-initially{% endif %}">
         <div class="flex items-start justify-between mb-4">
           <div class="flex relative group-hover:-translate-y-1 transition-transform">
-            {% if project.beneficiary_logo %}
+            {% if project.company_logo %}
               <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 p-3 flex items-center justify-center shadow-xl backdrop-blur-sm z-10 transition-all hover:bg-white/10">
-                <img src="{{ project.beneficiary_logo | relative_url }}" alt="Beneficiary Logo" class="max-w-full max-h-full logo-light object-contain" />
-              </div>
-            {% elsif project.company_logo %}
-              <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 p-3 flex items-center justify-center shadow-xl backdrop-blur-sm z-10 transition-all hover:bg-white/10">
-                <img src="{{ project.company_logo | relative_url }}" alt="Company Logo" class="max-w-full max-h-full logo-light object-contain opacity-90" />
+                <img src="{{ project.company_logo | relative_url }}" alt="Consulting Company Logo" class="max-w-full max-h-full logo-light object-contain opacity-90" />
               </div>
             {% else %}
               <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-{{ project.gradient_from }}/20 to-{{ project.gradient_to }}/20 border border-{{ project.gradient_from }}/25 flex items-center justify-center">
