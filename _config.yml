@@ -1,0 +1,22 @@
+# Jekyll Configuration
+title: "Ahmed Samir | Portfolio"
+email: "ahmed.samir.abdelaal@gmail.com"
+description: "Lead Full Stack Engineer (.NET | Angular | Mobile Hybrid). 9+ years delivering mission-critical enterprise systems for GCC/MENA markets."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://ahmedsamir50.github.io" # the base hostname & protocol for your site
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+# Build settings
+markdown: kramdown
+# theme: minima # Removed as we use custom layouts
+# plugins: # Temporarily disabled to resolve missing dependency errors
+#   - jekyll-feed
+#   - jekyll-sitemap
+
+sass:
+  style: compressed

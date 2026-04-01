@@ -255,64 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ── Project Modal Logic ── */
-const projectData = {
-  'pro-stores': {
-    title: 'Pro Stores Manager',
-    desc: '<div class="space-y-4"><p><strong class="text-emerald-400">Situation:</strong> Retail environments faced severe disruptions and data loss during frequent network outages.</p><p><strong class="text-emerald-400">Task:</strong> Architect a bulletproof SaaS Point-of-Sale system that guarantees 100% operational uptime irrespective of connection status.</p><p><strong class="text-emerald-400">Action:</strong> Engineered a robust Offline-First application using .NET MAUI Blazor Hybrid, featuring an advanced local SQLite synchronization engine that seamlessly maps to centralized nodes via RabbitMQ when connectivity resumes.</p><p><strong class="text-emerald-400">Result:</strong> Completely eliminated downtime for POS terminals, securing 50,000+ daily transactions with zero data-loss during complex reconnection phases.</p></div>',
-    tech: ['.NET MAUI', 'Blazor Hybrid', 'SQLite', 'Offline-First', 'Hangfire', 'RabbitMQ']
-  },
-  'appify': {
-    title: 'Appify — No-Code Platform',
-    desc: '<div class="space-y-4"><p><strong class="text-violet-400">Situation:</strong> Non-technical business teams required a rapid way to deploy functional mobile apps without heavy engineering overhead.</p><p><strong class="text-violet-400">Task:</strong> Architect a scalable drag-and-drop mobile app builder with automated, intelligent backend scaffolding.</p><p><strong class="text-violet-400">Action:</strong> Designed a full-stack microservices ecosystem leveraging Ionic/Capacitor for the cross-platform frontend builder, coupled with a dynamic .NET Core backend that automatically generates secure REST APIs and PostgreSQL schemas on the fly.</p><p><strong class="text-violet-400">Result:</strong> Empowered 100+ B2B clients to ship production-ready applications 10x faster natively to App Stores, scaling efficiently on a Kubernetes infrastructure.</p></div>',
-    tech: ['Ionic/Capacitor', 'Angular v22', '.NET Core', 'Docker', 'PostgreSQL', 'Microservices']
-  },
-  'eazy-order': {
-    title: 'Eazy-Order — Cloud POS',
-    desc: '<div class="space-y-4"><p><strong class="text-cyan-400">Situation:</strong> High-traffic restaurants experienced severe lag and order-dropping during peak rush hours using legacy monolithic systems.</p><p><strong class="text-cyan-400">Task:</strong> Develop a high-performance Restaurant Management System capable of handling thousands of concurrent requests seamlessly.</p><p><strong class="text-cyan-400">Action:</strong> Integrated RabbitMQ advanced message brokering to decouple order taking from backend processing. Built robust real-time SignalR hubs to instantly update kitchen displays and driver tracking apps without database polling.</p><p><strong class="text-cyan-400">Result:</strong> Successfully processed 10,000+ concurrent orders at peak hours with sub-200ms latency, drastically improving operational agility.</p></div>',
-    tech: ['RabbitMQ', '.NET Core APIs', 'PostgreSQL', 'Real-Time Sync', 'SignalR']
-  }
-};
-
-window.openProjectModal = function(id) {
-  const modal = document.getElementById('project-modal');
-  const modalContent = document.getElementById('project-modal-content');
-  const data = projectData[id];
-  if (!modal || !data) return;
-  
-  // Populate Data
-  document.getElementById('modal-title').textContent = data.title;
-  document.getElementById('modal-description').innerHTML = data.desc;
-  
-  const techContainer = document.getElementById('modal-tech');
-  techContainer.innerHTML = data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
-  
-  // Show Modal
-  modal.classList.remove('opacity-0', 'pointer-events-none');
-  modalContent.classList.remove('scale-95');
-  modalContent.classList.add('scale-100');
-  
-  // Prevent body scroll
-  document.body.style.overflow = 'hidden';
-  
-  // Re-initialize any new icons
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
-};
-
-window.closeProjectModal = function() {
-  const modal = document.getElementById('project-modal');
-  const modalContent = document.getElementById('project-modal-content');
-  if (!modal) return;
-  
-  modal.classList.add('opacity-0', 'pointer-events-none');
-  modalContent.classList.remove('scale-100');
-  modalContent.classList.add('scale-95');
-  
-  // Restore scroll
-  document.body.style.overflow = '';
-};
 
 /* ── Dynamic Footer Year ── */
 document.addEventListener('DOMContentLoaded', () => {
@@ -335,32 +277,68 @@ window.toggleAccordion = function(id) {
   // Toggle current item
   if (!isOpen) {
     item.classList.add('open');
+    // Force a browser re-recalculation/paint for elements inside (like logos)
+    // that might be affected by the grid height transition in some browsers.
+    setTimeout(() => {
+      window.dispatchEvent(new Event('scroll'));
+    }, 150); 
   }
 };
 
-/* ---------- Project Filtering ---------- */
+/* ---------- Project Filtering & Show More ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const showMoreBtn = document.getElementById('show-more-projects');
+  const showMoreContainer = document.getElementById('show-more-container');
+  
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', () => {
+      const hiddenCards = document.querySelectorAll('.project-card.hidden-initially');
+      hiddenCards.forEach(card => {
+        card.classList.remove('hidden-initially');
+        card.style.display = 'flex';
+        setTimeout(() => card.style.opacity = '1', 10);
+      });
+      showMoreContainer.classList.add('hidden');
+    });
+  }
+});
+
 window.filterProjects = (filter) => {
   const cards = document.querySelectorAll('.project-card');
   const buttons = document.querySelectorAll('.project-filter-btn');
-  
+  const showMoreContainer = document.getElementById('show-more-container');
+
   buttons.forEach(btn => {
-    if (btn.getAttribute('data-filter') === filter) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
+    btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
   });
 
   cards.forEach(card => {
-    const categories = card.getAttribute('data-category').split(' ');
-    if (filter === 'all' || categories.includes(filter)) {
-      card.style.display = 'flex';
-      setTimeout(() => card.style.opacity = '1', 10);
+    const categories = (card.getAttribute('data-category') || '').split(' ');
+    const matchesFilter = filter === 'all' || categories.includes(filter);
+
+    if (matchesFilter) {
+      if (filter === 'all' && card.classList.contains('hidden-initially')) {
+        card.style.display = 'none';
+        card.style.opacity = '0';
+      } else {
+        card.style.display = 'flex';
+        setTimeout(() => card.style.opacity = '1', 10);
+      }
     } else {
       card.style.opacity = '0';
       setTimeout(() => card.style.display = 'none', 300);
     }
   });
+
+  // Re-evaluate Show More button visibility
+  if (showMoreContainer) {
+    const hasHidden = document.querySelector('.project-card.hidden-initially');
+    if (filter === 'all' && hasHidden) {
+      showMoreContainer.classList.remove('hidden');
+    } else {
+      showMoreContainer.classList.add('hidden');
+    }
+  }
 };
 
 

@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<section class="py-24 sm:py-32 bg-navy-950 min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Back Link -->
+    <a href="{{ '/' | relative_url }}#projects"
+      class="inline-flex items-center gap-2 text-slate-500 hover:text-blue-400 transition-colors mb-12 group">
+      <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
+      Back to Portfolio
+    </a>
+
+    <!-- Project Header -->
+    <div class="section-fade mb-12">
+      <div class="flex flex-col sm:flex-row items-center gap-8 mb-8 text-center sm:text-left">
+        {% if page.company_logo %}
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 p-4 flex items-center justify-center shadow-xl backdrop-blur-sm">
+              <img src="{{ page.company_logo | relative_url }}" alt="Consultant Logo" class="max-w-full max-h-full logo-light opacity-90" />
+            </div>
+            <span class="text-[9px] font-mono uppercase tracking-tighter text-slate-500">Consultant</span>
+          </div>
+        {% endif %}
+
+        <div class="flex-1">
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-50 tracking-tight">{{ page.title }}</h1>
+          <div class="flex flex-wrap justify-center sm:justify-start gap-3 mt-3">
+            {% for cat in page.categories %}
+              <span class="px-2.5 py-1 rounded-md bg-{{ page.gradient_from }}/10 text-{{ page.gradient_from }} text-[10px] font-bold uppercase tracking-wider font-mono border border-{{ page.gradient_from }}/20">
+                {{ cat }}
+              </span>
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if page.beneficiary_logo %}
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-24 h-24 rounded-2xl bg-white/10 border border-white/20 p-4 flex items-center justify-center shadow-2xl backdrop-blur-md ring-1 ring-white/10">
+              <img src="{{ page.beneficiary_logo | relative_url }}" alt="Beneficiary Logo" class="max-w-full max-h-full logo-light" />
+            </div>
+            <span class="text-[9px] font-mono uppercase tracking-tighter text-blue-400">Beneficiary</span>
+          </div>
+        {% endif %}
+      </div>
+      <div class="h-1 w-24 bg-gradient-to-r from-{{ page.gradient_from }} to-{{ page.gradient_to }} rounded-full mx-auto sm:mx-0"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="section-fade text-slate-300 leading-relaxed text-lg">
+      {{ content }}
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="section-fade mt-20 p-8 rounded-3xl bg-navy-900 border border-white/10 text-center">
+      <h3 class="text-2xl font-bold text-slate-100 mb-4">Interested in similar architectural solutions?</h3>
+      <p class="text-slate-400 mb-8 max-w-xl mx-auto">I specialize in high-scale, resilient systems across the GCC
+        market. Let's discuss how we can build your next mission-critical platform.</p>
+      <a href="{{ '/' | relative_url }}#contact"
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all hover:scale-105">
+        <i data-lucide="mail" class="w-4 h-4"></i>Get in Touch
+      </a>
+    </div>
+
+  </div>
+</section>

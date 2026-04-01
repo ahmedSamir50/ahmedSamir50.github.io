@@ -2,7 +2,16 @@
 module.exports = {
   content: [
     "./index.html",
-    "./js/**/*.js"
+    "./insights.html",
+    "./js/**/*.js",
+    "./_layouts/**/*.html",
+    "./_projects/**/*.md",
+    "./_posts/**/*.md"
+  ],
+  safelist: [
+    {
+      pattern: /(bg|text|border|from|to)-(blue|violet|pink|cyan|emerald|amber)-500(\/20|\/10|\/30)?/,
+    }
   ],
   theme: {
     extend: {

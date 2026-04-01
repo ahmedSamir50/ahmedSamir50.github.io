@@ -288,6 +288,11 @@ body { font-family: 'Inter', sans-serif; background: #0A0F1E; color: #f1f5f9; }
 ::selection { background: rgba(59,130,246,0.3); color: #f1f5f9; }
 
 /* ---------- Experience Accordion ---------- */
+.accordion-content {
+  will-change: grid-template-rows;
+  backface-visibility: hidden;
+}
+
 .accordion-item.open .accordion-content {
   grid-template-rows: 1fr;
 }
@@ -301,6 +306,17 @@ body { font-family: 'Inter', sans-serif; background: #0A0F1E; color: #f1f5f9; }
 #exp-sgt.accordion-item.open { border-color: rgba(59, 130, 246, 0.3); background-color: rgba(59, 130, 246, 0.02); }
 #exp-flairs.accordion-item.open { border-color: rgba(139, 92, 246, 0.3); background-color: rgba(139, 92, 246, 0.02); }
 #exp-itworx.accordion-item.open { border-color: rgba(6, 182, 212, 0.3); background-color: rgba(6, 182, 212, 0.02); }
+
+.hidden-initially {
+  display: none !important;
+}
+
+.company-logo {
+  will-change: filter, transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0); /* Force 3D acceleration */
+}
 
 .logo-light {
   filter: brightness(0) invert(1) contrast(1.2);

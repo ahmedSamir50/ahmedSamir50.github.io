@@ -1,11 +1,16 @@
-# Planning & local-only docs
-MISSION.md
+# Jekyll
+/_site/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
 
-# Source CV (served from assets/cv/ instead)
-HelperFiles/
-
-# Skills reference folder
-SKILLS/
-
-# NPM dependencies
+# Node
 node_modules/
+dist/
+
+# OS/IDEs
+.DS_Store
+.vscode/
+.idea/
+*.log
