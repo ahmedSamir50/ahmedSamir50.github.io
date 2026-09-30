@@ -3,11 +3,11 @@ layout: project
 title: "ZVec.NET — First .NET SDK for ZVec"
 slug: "zvec-net"
 categories: ["open-source"]
-tech: [".NET 8+", "P/Invoke", "HNSW", "RAG", "DI", "MAUI", "NuGet"]
+tech: [".NET 8+", "LLM", "RAG", "P/Invoke", "HNSW", "DI", "MAUI", "NuGet"]
 icon: "database"
 gradient_from: "cyan-500"
 gradient_to: "blue-500"
-description: "Production .NET SDK for Alibaba ZVec — in-process vector search with typed ODM and DI. Published on NuGet; ecosystem integration with the upstream project in progress."
+description: "In-process vector search SDK for .NET, used to retrieve context for RAG and LLM apps. Published on NuGet."
 order: 0
 nuget_package: "ZVec.NET"
 project_logo: "assets/images/projects/zvec-net-logo.png"
